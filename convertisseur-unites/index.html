@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convertisseur d'unités : longueur, poids, température</title><meta name="description" content="Convertissez m/km/miles, kg/livres, °C/°F et plus, en un calcul instantané.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertisseur d'unités : longueur, poids, température","url":"https://hakersbkk.github.io/outils-maroc/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+<meta name="robots" content="index,follow">
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:#16202b;background:#f6f5f1;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:22px}header a{font-weight:800;text-decoration:none;color:#16202b}
+header span{color:#e2552b}main{background:#fff;border:1px solid #e6e2d9;border-radius:14px;padding:26px;margin:16px 0}
+h1{font-size:1.7rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px}
+h2{font-size:1.2rem;margin:20px 0 8px}p,li{color:#3c4650}ul,ol{padding-left:20px;margin:8px 0}
+label{display:block;margin:10px 0;font-size:.95rem}input,textarea,select{width:100%;padding:10px;font:inherit;border:1px solid #cfcbc0;border-radius:8px;margin-top:4px}
+button{font:inherit;font-weight:700;padding:10px 18px;border:0;border-radius:8px;background:#e2552b;color:#fff;cursor:pointer;margin-top:10px}
+#r,.out{margin-top:14px;padding:12px;background:#faf8f2;border:1px solid #e9e5da;border-radius:8px}
+textarea{resize:vertical}footer{color:#667380;font-size:.85rem;padding:18px 0 40px;text-align:center}
+.disc{font-size:.85rem;color:#667380;border-top:1px dashed #ddd;margin-top:22px;padding-top:10px}
+</style></head><body><div class="wrap">
+<header><a href="/">Outils<span>.</span>ma</a> — outils gratuits pour le Maroc</header>
+<main>
+<h1>Convertisseur d'unités</h1>
+<label>Valeur <input id="v" type="number" value="10"></label>
+<label>Catégorie <select id="c" onchange="units()"><option value="len">Longueur</option><option value="w">Poids</option><option value="t">Température</option></select></label>
+<label>De <select id="a"></select> vers <select id="b"></select></label>
+<button onclick="calc()">Convertir</button><div class="out" id="r"></div>
+<script>const U={len:{m:1,km:1000,cm:.01,'mile':1609.344,'pied (ft)':.3048,'pouce (in)':.0254},
+w:{kg:1,g:.001,'livre (lb)':.453592,'tonne':1000},t:{'°C':0,'°F':1}};
+function units(){const c=document.getElementById('c').value;const o=Object.keys(U[c]);
+document.getElementById('a').innerHTML=document.getElementById('b').innerHTML=o.map(u=>`<option>${u}</option>`).join('');calc()}
+function calc(){const v=+document.getElementById('v').value||0,c=document.getElementById('c').value,a=document.getElementById('a').value,b=document.getElementById('b').value;
+let r;if(c==='t'){let cc=a==='°C'?v:(v-32)*5/9;r=b==='°C'?cc:cc*9/5+32}
+else r=v*U[c][a]/U[c][b];
+document.getElementById('r').innerHTML=`<b>${v} ${a} = ${r.toFixed(4)} ${b}</b>`}
+units();</script>
+
+</main>
+<footer>© Outils.ma — outils gratuits · <a href="/">tous les outils</a> · Soutenir le projet (BTC) : <code style="font-size:.75rem;word-break:break-all">bc1qwmx0qnq8hkf3w5swzku9unfem5k9dtqjr9fkqm</code></footer>
+</div></body></html>
