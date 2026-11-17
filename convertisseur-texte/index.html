@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convertisseur de texte : MAJUSCULES, minuscules, Titre, camelCase</title><meta name="description" content="Transformez votre texte en un clic : majuscules, minuscules, Première Lettre, camelCase, inverse.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertisseur de texte : MAJUSCULES, minuscules, Titre, camelCase","url":"https://hakersbkk.github.io/outils-maroc/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+<meta name="robots" content="index,follow">
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:#16202b;background:#f6f5f1;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:22px}header a{font-weight:800;text-decoration:none;color:#16202b}
+header span{color:#e2552b}main{background:#fff;border:1px solid #e6e2d9;border-radius:14px;padding:26px;margin:16px 0}
+h1{font-size:1.7rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px}
+h2{font-size:1.2rem;margin:20px 0 8px}p,li{color:#3c4650}ul,ol{padding-left:20px;margin:8px 0}
+label{display:block;margin:10px 0;font-size:.95rem}input,textarea,select{width:100%;padding:10px;font:inherit;border:1px solid #cfcbc0;border-radius:8px;margin-top:4px}
+button{font:inherit;font-weight:700;padding:10px 18px;border:0;border-radius:8px;background:#e2552b;color:#fff;cursor:pointer;margin-top:10px}
+#r,.out{margin-top:14px;padding:12px;background:#faf8f2;border:1px solid #e9e5da;border-radius:8px}
+textarea{resize:vertical}footer{color:#667380;font-size:.85rem;padding:18px 0 40px;text-align:center}
+.disc{font-size:.85rem;color:#667380;border-top:1px dashed #ddd;margin-top:22px;padding-top:10px}
+</style></head><body><div class="wrap">
+<header><a href="/">Outils<span>.</span>ma</a> — outils gratuits pour le Maroc</header>
+<main>
+<h1>Convertisseur de texte</h1>
+<textarea id="t" rows="6" placeholder="Collez votre texte..."></textarea>
+<button onclick="f('up')">MAJUSCULES</button> <button onclick="f('lo')">minuscules</button>
+<button onclick="f('ti')">Première Lettre</button> <button onclick="f('ca')">camelCase</button>
+<button onclick="f('rv')">Inverser</button>
+<div class="out" id="r" style="font-family:monospace;white-space:pre-wrap"></div>
+<script>function f(m){const t=document.getElementById('t');let v=t.value;
+if(m==='up')v=v.toUpperCase();if(m==='lo')v=v.toLowerCase();
+if(m==='ti')v=v.toLowerCase().replace(/(^|\s)(\S)/g,(a,b,c)=>b+c.toUpperCase());
+if(m==='ca')v=v.toLowerCase().replace(/[^a-z0-9]+(.)/g,(a,c)=>c.toUpperCase());
+if(m==='rv')v=[...v].reverse().join('');
+document.getElementById('r').textContent=v;}</script>
+
+</main>
+<footer>© Outils.ma — outils gratuits · <a href="/">tous les outils</a> · Soutenir le projet (BTC) : <code style="font-size:.75rem;word-break:break-all">bc1qwmx0qnq8hkf3w5swzku9unfem5k9dtqjr9fkqm</code></footer>
+</div></body></html>
