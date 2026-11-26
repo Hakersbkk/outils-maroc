@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convertisseur Dirham MAD ⇄ Riyal Saoudien, AED, CAD, CHF, GBP</title><meta name="description" content="Convertisseur pour MRE : dirham marocain contre SAR, AED, CAD, CHF, GBP — taux du jour en direct.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertisseur Dirham MAD ⇄ Riyal Saoudien, AED, CAD, CHF, GBP","url":"https://hakersbkk.github.io/outils-maroc/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+<meta name="robots" content="index,follow">
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:#16202b;background:#f6f5f1;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:22px}header a{font-weight:800;text-decoration:none;color:#16202b}
+header span{color:#e2552b}main{background:#fff;border:1px solid #e6e2d9;border-radius:14px;padding:26px;margin:16px 0}
+h1{font-size:1.7rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px}
+h2{font-size:1.2rem;margin:20px 0 8px}p,li{color:#3c4650}ul,ol{padding-left:20px;margin:8px 0}
+label{display:block;margin:10px 0;font-size:.95rem}input,textarea,select{width:100%;padding:10px;font:inherit;border:1px solid #cfcbc0;border-radius:8px;margin-top:4px}
+button{font:inherit;font-weight:700;padding:10px 18px;border:0;border-radius:8px;background:#e2552b;color:#fff;cursor:pointer;margin-top:10px}
+#r,.out{margin-top:14px;padding:12px;background:#faf8f2;border:1px solid #e9e5da;border-radius:8px}
+textarea{resize:vertical}footer{color:#667380;font-size:.85rem;padding:18px 0 40px;text-align:center}
+.disc{font-size:.85rem;color:#667380;border-top:1px dashed #ddd;margin-top:22px;padding-top:10px}
+</style></head><body><div class="wrap">
+<header><a href="/">Outils<span>.</span>ma</a> — outils gratuits pour le Maroc</header>
+<main>
+<h1>Convertisseur MAD ⇄ devises MRE</h1>
+<label>Montant <input id="m" type="number" value="1000"></label>
+<select id="d"><option value="SAR">Riyal saoudien (SAR)</option><option value="AED">Dirham EAU (AED)</option><option value="CAD">Dollar canadien (CAD)</option><option value="CHF">Franc suisse (CHF)</option><option value="GBP">Livre sterling (GBP)</option></select>
+<select id="s"><option value="out">MAD → devise</option><option value="in">devise → MAD</option></select>
+<button onclick="calc()">Convertir</button><div id="r">Chargement des taux du jour…</div>
+<script>let R=null;fetch('https://open.er-api.com/v6/latest/MAD').then(x=>x.json()).then(d=>{R=d.rates;calc()}).catch(()=>{document.getElementById('r').textContent='Taux indisponible, réessayez.'});
+function calc(){const m=+document.getElementById('m').value||0;if(!R)return;const c=document.getElementById('d').value,rate=R[c],inv=document.getElementById('s').value==='in';
+document.getElementById('r').innerHTML=(inv?`${m} ${c} = <b>${(m/rate).toFixed(2)} MAD</b>`:`${m} MAD = <b>${(m*rate).toFixed(2)} ${c}</b>`)+'<br><small>Taux du jour (open.er-api.com) — les frais de transfert s ajoutent selon l opérateur.</small>';}</script>
+
+</main>
+<footer>© Outils.ma — outils gratuits · <a href="/">tous les outils</a> · Soutenir le projet (BTC) : <code style="font-size:.75rem;word-break:break-all">bc1qhw976uydhveqw3lyzm7fkca37fv369zk5ykezy</code></footer>
+</div></body></html>
